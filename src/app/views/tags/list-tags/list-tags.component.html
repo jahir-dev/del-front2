@@ -1,9 +1,21 @@
-<p>
-  list-tags works!
-</p>
+<h2 >Tags</h2>
+  <p>Liste des tags disponible :</p>
   <div class="well">
-  	<div *ngFor = "let tag of tags">
-  		{{ tag.label }}
-  	</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Label</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let tag of tags">
+          <td>{{ tag.id }}</td>
+          <td>{{ tag.label }}</td>
+          <td>Edit / Delete</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
