@@ -10,10 +10,6 @@ const routes: Routes = [
     component: ListTagsComponent
   },
   {
-    path: 'ajout',
-    component: AddTagComponent
-  },
-  {
     path: 'modifier',
     component: UpdateTagComponent
   }

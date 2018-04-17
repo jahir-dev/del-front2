@@ -1,6 +1,36 @@
-<h2 >Tags</h2>
-  <p>Liste des tags disponible :</p>
-  <div class="well">
+<!-- Form d'ajhout des tags -->
+
+<div class="container">
+{{ data | json }}
+<h5 class="mt-4">Ajouter une tag</h5>
+  <div *ngIf="alertOperation" class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ alertOperation }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click) = "resetAlertOp()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+<div class=" d-flex justify-content-center ">
+  <div class="row ">
+      <div class="card card-body bg-light">
+          <form class="form-inline">
+              <div class="form-group">
+                  <label for="label-tag" class="control-label mr-2" >Tag</label>
+                  <input type="text" class="form-control"  [ngClass]="{'is-invalid' : error, 'is-valid' : !error }" id="label-tag" [(ngModel)]="tag.label" name="label">
+                  <button type="submit" class="btn btn-secondary ml-2" (click)="ajouterTag()">Ajouter</button>
+              </div>
+          </form>
+          <div *ngIf="error" class="ml-4" style="color:red; font-size:12px">
+              {{errorMsg}}
+          </div>
+    </div>
+
+  </div>  <!-- end of row-->
+</div>
+
+<h5>Liste des tags</h5>
+<!-- list des tags -->
+  <!-- <p>Liste des tags disponible :</p> -->
+  <div class="well mt-4">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -13,9 +43,10 @@
         <tr *ngFor = "let tag of tags">
           <td>{{ tag.id }}</td>
           <td>{{ tag.label }}</td>
-          <td>Edit / Delete</td>
+          <td> <i class="far fa-edit fa-1x" (click) = "modifierTag(tag.id, tag.label)"></i> / <i class="far fa-trash-alt fa-1x" (click)="supprimerTag(tag)"></i></td>
         </tr>
       </tbody>
     </table>
   </div>
 
+</div>
