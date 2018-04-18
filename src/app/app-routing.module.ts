@@ -11,8 +11,8 @@ const routes: Routes = [
     loadChildren: 'app/views/specialites/specialites.module#SpecialitesModule'
   },
   {
-    path: 'tags',
-    loadChildren: 'app/views/tags/tags.module#TagsModule'
+    path: 'posts',
+    loadChildren: 'app/views/posts/posts.module#PostsModule'
   }
 ];
 

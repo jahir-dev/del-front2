@@ -10,7 +10,7 @@ const routes: Routes = [
     component : ListPostsComponent
   },
   {
-    path: 'ajouter',
+    path: 'ajout',
     component : AddPostComponent
   },
   {

@@ -3,6 +3,21 @@ export class Tag {
   public label: string;
 }
 
+export class Specialite {
+  public id: number;
+  public label: string;
+  public tags: Tag[];
+}
+
+export class Post {
+  public id: number;
+  public titre: string;
+  public description: string;
+  public tags: Tag[];
+  public created_at ?;
+}
+
+
 export class Hero {
   id = 0;
   name = '';

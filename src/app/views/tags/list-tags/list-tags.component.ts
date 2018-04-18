@@ -44,25 +44,6 @@ export class ListTagsComponent implements OnInit {
 
   }
 
-  // ajouterTag() {
-  //   if (!this.tag.label || this.tag.label.length <= 2 ) {
-  //     this.error = true;
-  //     this.errorMsg = 'Veuillez saisir un nom de tag valide.';
-  //     return;
-  //   }
-  //   this.error = false;
-  //   this.errorMsg = '';
-
-  //   console.log('dans ajouter tag');
-  //   this.tagsService.createTag(this.tag).subscribe(tag => console.log(tag),
-  //     resp => {
-  //       console.log('test resp ' + resp.status + ' ' + resp.toString());
-  //       this.alertOperation = 'Operation executé avec succés';
-  //       console.log('op : ' + this.alertOperation);
-  //     });
-  //   console.log('label = ' + this.label);
-  // }
-
   resetAlertOp() {
     this.alertOperation = '';
   }

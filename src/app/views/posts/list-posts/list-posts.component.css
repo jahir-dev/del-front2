@@ -1,0 +1,25 @@
+
+.circle{border-radius:50%}
+.opacity{
+  opacity: 0.6;
+}
+.card {box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)}
+.card-rep {box-shadow:0 0px 2px 0px rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)}
+
+/* Colors */
+.button:hover{color:#000!important;background-color:#ccc!important}
+.theme-d {color:#fff !important; background-color:#4d636f !important}
+.blue-grey,.hover-blue-gray:hover,.dark-gray,.hover-dark-gray:hover{color:#fff!important;background-color:#4d636f !important}
+
+.tagSpan {
+  color: black;
+  border: 1px solid #212529;
+  background-color: gray;
+  opacity: 0.8;
+  margin-right: 1px;
+  padding: 5px
+}
+
+.opacity8 {
+  opacity: 0.8;
+}

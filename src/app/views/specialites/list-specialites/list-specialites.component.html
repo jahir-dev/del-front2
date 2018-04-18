@@ -1,3 +1,65 @@
-<p>
-  list-specialites works!
-</p>
+<!-- Form d'ajhout des tags -->
+
+<div>
+  {{ data | json }}
+  <h5 class="mt-4 opacity">Ajouter une specialite</h5>
+    <div *ngIf="alertOperation" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ alertOperation }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click) = "resetAlertOp()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="row justify-content-md-center mb-3">
+  <div class="col-10">
+        <div class="card card-body bg-light">
+            <form>
+                <div class="form-inline mb-2">
+                    <label for="label-tag" class="control-label mr-2" >Label</label>
+                    <input type="text" class="form-control col-10"  [ngClass]="{'is-invalid' : error, 'is-valid' : !error }" id="label-tag" [(ngModel)] = "specialite.label" name="label">
+                  </div>
+                  <div class="form-inline">
+                    <label for="label-tag" class="control-label mr-2" >Tags :</label>
+                    <select class="custom-select col-10" size="5" multiple [(ngModel)]="specialite.tags" name="tags">
+                        <option selected disabled>Selectionnez les tags</option>
+                        <option *ngFor="let tag of tags" [value]="tag.id">{{tag.label}}</option>
+                      </select>
+                  </div>
+                </form>
+                <div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-secondary mt-3 btn-block col-4" (click)="ajouterSpecialite()">Ajouter</button>
+                      </div>
+                  </div>
+            <div *ngIf="error" class="ml-4" style="color:red; font-size:12px">
+                {{errorMsg}}
+            </div>
+</div>
+    </div>  <!-- end of row-->
+  </div>
+
+  <h5 class="opacity">Liste des Specialités</h5>
+  <!-- list des tags -->
+    <!-- <p>Liste des tags disponible :</p> -->
+    <div class="well mt-4">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Label</th>
+            <th>Tags</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let specialite of specialites">
+            <td>{{ specialite.id }}</td>
+            <td>{{ specialite.label }}</td>
+            <td><span *ngFor = "let tag of specialite.tags" class="tagSpan">{{ tag.label }}</span></td>
+            <td> <i class="far fa-edit fa-1x" (click) = "modifierSpecialite(specialite)"></i> / <i class="far fa-trash-alt fa-1x" (click)="supprimerSpecialite(specialite)"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>

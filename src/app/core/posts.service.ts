@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Tag } from '../models/data-model';
+import { Post, Specialite, Tag } from '../models/data-model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 // import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-
 @Injectable()
-export class TagsService {
-  private tagsUrl = 'http://localhost:8000/api/tags';
+export class PostsService {
+
+  private postsUrl = 'http://localhost:8000/api/posts';
 
   constructor(private http: HttpClient) { }
 
   logMe() {
-    console.log('Hello from tag service');
+    console.log('Hello from posts service');
   }
 
   private handleError(error: any) {
@@ -24,40 +24,40 @@ export class TagsService {
     return Observable.throw(error || 'Jahir : backend server error');
   }
 
-  getAllTags(): Observable<Tag[]> {
-    return this.http.get(this.tagsUrl)
+  getAllPosts(): Observable<Post[]> {
+    return this.http.get(this.postsUrl)
       .map(response => {
         return response;
       })
       .catch(error => this.handleError(error));
   }
 
-  getTagById(tagId: string): Observable<Tag> {
-    return this.http.get(this.tagsUrl + '/' + tagId)
+  getPostById(postId: string): Observable<Post> {
+    return this.http.get(this.postsUrl + '/' + postId)
       .map(response => {
         return response;
       })
       .catch(error => this.handleError(error));
   }
 
-  createTag(tag: Tag): Observable<any> {
-    console.log('dans createTag = ' + tag.label);
-    return this.http.post(this.tagsUrl, {label: tag.label}, { observe: 'response', responseType: 'text' })
+  createPost(post: Post): Observable<any> {
+    console.log('dans createPost  :' + JSON.stringify(post));
+    return this.http.post(this.postsUrl, post , { observe: 'response', responseType: 'text' })
     .catch(error => this.handleError(error));
   }
 
-  updateTag(tag: Tag): Observable<any> {
-    return this.http.put(this.tagsUrl + '/' + tag.id, tag)
+  updatePost(post: Post): Observable<any> {
+    return this.http.put(this.postsUrl + '/' + post.id, post)
       .map((response) => {
-        // this.showSnackBar('tag est modifié');
+        // this.showSnackBar('post est modifié');
         return response;
       })
       .catch(error => this.handleError(error));
   }
 
-  deleteTagById(id: any): Observable<any> {
-    console.log('dans le service methode deleteTagById');
-    const url = `${this.tagsUrl}/${id}`;
+  deletePostById(id: any): Observable<any> {
+    console.log('dans le service methode deletePostById');
+    const url = `${this.postsUrl}/${id}`;
     return this.http.delete(url, { observe: 'response', responseType: 'text' }).catch(error => this.handleError(error));
   }
 
