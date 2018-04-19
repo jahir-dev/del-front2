@@ -12,8 +12,11 @@
         </div>
         <hr class="clear">
         <h6>{{post.titre}}</h6>
-        <p>{{ post.description }}</p>
-        <h6 class="opacity8 mt-0 pt-0">Tags:</h6><span *ngFor = "let tag of post.tags" class="tagSpan">{{ tag.label }}</span>
+        <p class="mb-2">{{ post.description }}</p>
+        <div class="mb-3 mt-0">
+            <h6 class="opacity8 mt-0 pt-0">Tags:</h6>
+            <span *ngFor = "let tag of post.tags" class="tagSpan">{{ tag.label }}</span>
+        </div>
         <div>
             <div *ngFor="let medecin of post.medecins" class="container card-rep ml-3 mt-2"><br>
               <div class="justify-content-md-center">
@@ -29,8 +32,10 @@
               <p>{{ medecin.pivot.reponse }}</p>
 
           </div>
-            <div class="d-flex justify-content-center">
-                <button type="button" class="button theme-d mb-2 btn-block col-4">
+          <div class="form-inline mb-2 justify-content-md-center">
+              <textarea class="form-control col-10" rows="2" [ngClass]="{'is-invalid' : error, 'is-valid' : !error }" [(ngModel)] = "post.nouv_reponse" placeholder="Aider cette personne ?" name="description"></textarea>
+
+                <button type="button" class="button theme-d ml-2 my-2 btn-block col-2" (click)="ajouterReponse(post)">
                     <i class="fa fa-comment"></i>&nbsp;Repondre</button>
             </div>
         </div>

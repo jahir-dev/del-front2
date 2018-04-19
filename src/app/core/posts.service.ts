@@ -10,6 +10,7 @@ import 'rxjs/add/operator/catch';
 export class PostsService {
 
   private postsUrl = 'http://localhost:8000/api/posts';
+  private responseUrl = 'http://localhost:8000/api/reponse';
 
   constructor(private http: HttpClient) { }
 
@@ -59,6 +60,14 @@ export class PostsService {
     console.log('dans le service methode deletePostById');
     const url = `${this.postsUrl}/${id}`;
     return this.http.delete(url, { observe: 'response', responseType: 'text' }).catch(error => this.handleError(error));
+  }
+
+  responseToPost(id_post: number, id_medecin: number, reponse: string): Observable<any> {
+    console.log('dans le service post methode responseToPost');
+    return this.http.post(this.responseUrl,
+       { 'post' : id_post, 'medecin' : id_medecin, 'reponse' : reponse },
+       { observe: 'response', responseType: 'text' })
+    .catch(error => this.handleError(error));
   }
 
 }

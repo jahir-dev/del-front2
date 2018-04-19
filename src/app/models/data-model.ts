@@ -9,12 +9,29 @@ export class Specialite {
   public tags: Tag[];
 }
 
+class Pivot {
+  public reponse: string;
+  public created_at: any;
+}
+
+export class Medecin {
+  public id: number;
+  public cin: string;
+  public nom: string;
+  public prenom: string;
+  public email: string;
+  public adresse: string;
+  public pivot: Pivot = new Pivot();
+}
+
 export class Post {
   public id: number;
   public titre: string;
   public description: string;
   public tags: Tag[];
+  public medecins: Medecin[];
   public created_at ?;
+  public nouv_reponse ?: string;
 }
 
 
